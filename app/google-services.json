@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "930227011302",
+    "firebase_url": "https://beerchatapp-default-rtdb.firebaseio.com",
+    "project_id": "beerchatapp",
+    "storage_bucket": "beerchatapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:930227011302:android:af4b55ac7278f3cc4a8527",
+        "android_client_info": {
+          "package_name": "com.mobiledestroyers.beerme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "930227011302-ldgn7f9irbl8p3hh9bqtao4vmjcd5rrr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mobiledestroyers.beerme",
+            "certificate_hash": "a4834d428a239b9c7784b607bf445a6aa5fab852"
+          }
+        },
+        {
+          "client_id": "930227011302-edgko9u05eb8g5fm8ngsj51rvg8h3oi1.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBE4ihTbLMiggcL3hnaJiG1xiocRjxBsw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "930227011302-edgko9u05eb8g5fm8ngsj51rvg8h3oi1.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

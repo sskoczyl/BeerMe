@@ -1,1 +1,1 @@
-# BeerMe-v2
+# BeerMe

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".fragments.ProfileFragment">
+
+    <ImageView
+            android:src="@drawable/profile_activity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/imageView4"
+            android:scaleType="centerCrop"/>
+
+    <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        <RelativeLayout
+                android:id="@+id/profileLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp">
+
+            <ImageView
+                    android:id="@+id/photoIV"
+                    android:layout_width="@dimen/standard_width"
+                    android:layout_height="@dimen/standard_width"
+                    android:paddingBottom="8dp"
+                    android:src="@drawable/default_photo"/>
+
+            <android.support.design.widget.TextInputLayout
+                    android:textColorHint="@color/white"
+                    android:id="@+id/nameTIL"
+                    android:layout_width="@dimen/standard_width"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/photoIV"
+                    android:textColor="@color/white"
+                    android:paddingBottom="8dp">
+
+                <android.support.design.widget.TextInputEditText
+                        android:textColorHint="@color/white"
+                        android:id="@+id/nameET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:hint="@string/hint_name"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:textColorHint="@color/white"
+                    android:textColor="@color/white"
+                    android:id="@+id/emailTIL"
+                    android:layout_width="@dimen/standard_width"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/nameTIL"
+                    android:paddingBottom="8dp">
+
+                <android.support.design.widget.TextInputEditText
+                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        android:id="@+id/emailET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_email"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                    android:textColor="@color/white"
+                    android:id="@+id/ageTIL"
+                    android:layout_width="@dimen/standard_width"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/emailTIL"
+                    android:paddingBottom="8dp">
+
+                <android.support.design.widget.TextInputEditText
+                        android:textColorHint="@color/white"
+                        android:textColor="@color/white"
+                        android:id="@+id/ageET"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/hint_age"/>
+
+            </android.support.design.widget.TextInputLayout>
+
+            <LinearLayout
+                    android:id="@+id/radio1Layout"
+                    android:layout_width="@dimen/standard_width"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ageTIL"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:textColor="@color/white"
+                        android:id="@+id/levelTV"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/standard_height"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="@string/hint"/>
+
+                <RadioGroup
+                        android:id="@+id/radioGroup1"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/standard_height"
+                        android:layout_weight="2"
+                        android:paddingBottom="8dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                    <RadioButton
+                            android:textColor="@color/white"
+                            android:id="@+id/radioBeerophile1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/hint_beerophile"/>
+
+                    <RadioButton
+                            android:textColor="@color/white"
+                            android:id="@+id/radioBegginer1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/hint_begginer"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/radio2Layout"
+                    android:layout_width="@dimen/standard_width"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/radio1Layout"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                <TextView
+                        android:textColor="@color/white"
+                        android:id="@+id/preferredLevelTV"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/standard_height"
+                        android:layout_weight="1"
+                        android:padding="8dp"
+                        android:text="@string/hint_preferred"/>
+
+                <RadioGroup
+                        android:id="@+id/radioGroup2"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/standard_height"
+                        android:layout_weight="2"
+                        android:paddingBottom="8dp"
+                        android:gravity="right"
+                        android:orientation="horizontal">
+
+                    <RadioButton
+                            android:textColor="@color/white"
+                            android:id="@+id/radioBeerophile2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/hint_beerophile"/>
+
+                    <RadioButton
+                            android:textColor="@color/white"
+                            android:id="@+id/radioBegginer2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/hint_begginer"/>
+
+                </RadioGroup>
+
+            </LinearLayout>
+
+            <Button
+                    android:id="@+id/applyButton"
+                    android:layout_width="@dimen/standard_width"
+                    android:layout_height="@dimen/standard_height"
+                    android:layout_below="@id/radio2Layout"
+                    style="@style/StandardButton"
+                    android:text="@string/button_apply"/>
+
+            <Button
+                    android:id="@+id/signoutButton"
+                    android:layout_width="@dimen/standard_width"
+                    android:layout_height="@dimen/standard_height"
+                    android:layout_below="@id/applyButton"
+                    style="@style/StandardButton"
+                    android:text="@string/button_sign_out"/>
+
+        </RelativeLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+    <LinearLayout
+            android:id="@+id/progressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#aaaaaaaa">
+
+        <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
