@@ -16,6 +16,8 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
+import com.mobiledestroyers.beerme.Chat
+import com.mobiledestroyers.beerme.adapters.ChatsAdapter
 import kotlinx.android.synthetic.main.fragment_matches.*
 
 class MatchesFragment : Fragment() {
@@ -23,6 +25,7 @@ class MatchesFragment : Fragment() {
     private lateinit var userId: String
     private lateinit var userDatabase: DatabaseReference
     private lateinit var chatDatabase: DatabaseReference
+    private val chatsAdapter = ChatsAdapter(ArrayList())
     private var callback: Callback? = null
 
     fun setCallback(callback: Callback) {
@@ -47,6 +50,7 @@ class MatchesFragment : Fragment() {
         matchesRV.apply {
             setHasFixedSize(false)
             layoutManager = LinearLayoutManager(context)
+            adapter = chatsAdapter
         }
     }
 
@@ -68,6 +72,8 @@ class MatchesFragment : Fragment() {
                                 override fun onDataChange(p0: DataSnapshot) {
                                     val user = p0.getValue(User::class.java)
                                     if(user != null) {
+                                        val chat = Chat(userId, chatId, user.uid, user.name, user.imageUrl)
+                                        chatsAdapter.addElement(chat)
                                     }
                                 }
 

@@ -10,6 +10,8 @@
             android:theme="@style/AppTheme.NoActionBar">
         <activity android:name="com.mobiledestroyers.beerme.activities.UserInfoActivity">
         </activity>
+        <activity android:name=".activities.ChatActivity">
+        </activity>
         <activity
                 android:name="com.mobiledestroyers.beerme.activities.SignupActivity"
                 android:screenOrientation="portrait"
