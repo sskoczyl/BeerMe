@@ -101,23 +101,18 @@ class BeerMeActivity : AppCompatActivity(), Callback {
                 children.forEach{
                     iter +=1
                 }
-                if(iter != counter){
-                    //Toast.makeText(applicationContext,counter.toString(),Toast.LENGTH_LONG).show()
+                if(iter != counter && counter != 0 ){
                     counter = iter
                     val notification = NotificationCompat.Builder(applicationContext,CHANNEL_ID)
-                        .setContentText("Awesome notification")
-                        .setContentTitle("title")
+                        .setContentText("Nasze grono użytkowników się powiększa. Własnie w szeregi naszych użytkowników wstąpił nowy członek.")
+                        .setContentTitle("Jest nas coraz więcej :)")
                         .setSmallIcon(R.drawable.beerme_logo)
                         .setPriority(NotificationCompat.PRIORITY_HIGH)
                         .build()
                     val notificationManager = NotificationManagerCompat.from(this@BeerMeActivity)
                     notificationManager.notify(NOTIFICATION_ID,notification)
-
-
                 }
-
             }
-
             override fun onCancelled(p0: DatabaseError) {
                 TODO("Not yet implemented")
             }
@@ -157,7 +152,6 @@ class BeerMeActivity : AppCompatActivity(), Callback {
                     }
                 }
             }
-
         })
 
         profileTab?.select()
