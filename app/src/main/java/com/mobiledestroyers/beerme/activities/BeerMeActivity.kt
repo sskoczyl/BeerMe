@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.provider.MediaStore
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
@@ -24,6 +25,7 @@ import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
 import java.io.IOException
+import java.util.*
 
 const val REQUEST_CODE_PHOTO = 1234
 
@@ -41,6 +43,7 @@ class BeerMeActivity : AppCompatActivity(), Callback {
     private var profileTab: TabLayout.Tab? = null
     private var swipeTab: TabLayout.Tab? = null
     private var matchesTab: TabLayout.Tab? = null
+    private var calendarTab: TabLayout.Tab? = null
 
     private var resultImageUrl: Uri? = null
 
@@ -58,14 +61,18 @@ class BeerMeActivity : AppCompatActivity(), Callback {
         profileTab = navigationTabs.newTab()
         swipeTab = navigationTabs.newTab()
         matchesTab = navigationTabs.newTab()
+        calendarTab = navigationTabs.newTab()
 
         profileTab?.icon = ContextCompat.getDrawable(this, R.drawable.tab_profile)
         swipeTab?.icon = ContextCompat.getDrawable(this, R.drawable.beerme_logo)
         matchesTab?.icon = ContextCompat.getDrawable(this, R.drawable.tab_matches)
+        calendarTab?.icon = ContextCompat.getDrawable(this, R.drawable.calendar_tab)
 
         navigationTabs.addTab(profileTab!!)
         navigationTabs.addTab(swipeTab!!)
         navigationTabs.addTab(matchesTab!!)
+        navigationTabs.addTab(calendarTab!!)
+
 
         navigationTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {
@@ -97,6 +104,16 @@ class BeerMeActivity : AppCompatActivity(), Callback {
                             matchesFragment!!.setCallback(this@BeerMeActivity)
                         }
                         replaceFragment(matchesFragment!!)
+                    }
+                    calendarTab -> {
+                        val insertCalendarIntent = Intent(Intent.ACTION_INSERT)
+                            .setData(CalendarContract.Events.CONTENT_URI)
+                            .putExtra(CalendarContract.Events.TITLE, "BeerMe Meetup") // Simple title
+                            //.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, false)
+                            //.putExtra(CalendarContract.Events.DESCRIPTION, holder.taskText.text.toString()) // Description
+                            .putExtra(CalendarContract.Events.ACCESS_LEVEL, CalendarContract.Events.ACCESS_PRIVATE)
+                            .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_FREE)
+                        startActivity(insertCalendarIntent)
                     }
                 }
             }
