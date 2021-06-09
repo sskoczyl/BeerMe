@@ -1,16 +1,24 @@
 package com.mobiledestroyers.beerme.activities
 
 import android.app.Activity
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import android.net.Uri
+import android.os.Build
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.design.widget.TabLayout
 import android.support.v4.app.Fragment
+import android.support.v4.app.NotificationCompat
+import android.support.v4.app.NotificationManagerCompat
 import android.support.v4.content.ContextCompat
+import android.widget.Toast
 import com.mobiledestroyers.beerme.R
 import com.mobiledestroyers.beerme.fragments.MatchesFragment
 import com.mobiledestroyers.beerme.fragments.ProfileFragment
@@ -18,8 +26,7 @@ import com.mobiledestroyers.beerme.fragments.SwipeFragment
 import com.mobiledestroyers.beerme.util.DATA_CHATS
 import com.mobiledestroyers.beerme.util.DATA_USERS
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import kotlinx.android.synthetic.main.activity_main.*
 import java.io.ByteArrayOutputStream
@@ -42,11 +49,29 @@ class BeerMeActivity : AppCompatActivity(), Callback {
     private var swipeTab: TabLayout.Tab? = null
     private var matchesTab: TabLayout.Tab? = null
 
+    private val CHANNEL_ID = "channelID"
+    private val CHANNEL_NAME = "channelName"
+    val NOTIFICATION_ID = 0
+
     private var resultImageUrl: Uri? = null
+    private var counter: Int = 0
+
+    fun createNotification(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+            val channel = NotificationChannel(CHANNEL_ID,CHANNEL_NAME,NotificationManager.IMPORTANCE_DEFAULT).apply{
+                lightColor = Color.GREEN
+                enableLights(true)
+            }
+            val manager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            manager.createNotificationChannel(channel)
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        createNotification()
+
 
         if(userId.isNullOrEmpty()) {
             onSignout()
@@ -54,6 +79,7 @@ class BeerMeActivity : AppCompatActivity(), Callback {
 
         userDatabase = FirebaseDatabase.getInstance().reference.child(DATA_USERS)
         chatDatabase = FirebaseDatabase.getInstance().reference.child(DATA_CHATS)
+
 
         profileTab = navigationTabs.newTab()
         swipeTab = navigationTabs.newTab()
@@ -66,6 +92,37 @@ class BeerMeActivity : AppCompatActivity(), Callback {
         navigationTabs.addTab(profileTab!!)
         navigationTabs.addTab(swipeTab!!)
         navigationTabs.addTab(matchesTab!!)
+
+
+        userDatabase.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(p0: DataSnapshot) {
+                val children = p0.children
+                var iter = 0
+                children.forEach{
+                    iter +=1
+                }
+                if(iter != counter){
+                    //Toast.makeText(applicationContext,counter.toString(),Toast.LENGTH_LONG).show()
+                    counter = iter
+                    val notification = NotificationCompat.Builder(applicationContext,CHANNEL_ID)
+                        .setContentText("Awesome notification")
+                        .setContentTitle("title")
+                        .setSmallIcon(R.drawable.beerme_logo)
+                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .build()
+                    val notificationManager = NotificationManagerCompat.from(this@BeerMeActivity)
+                    notificationManager.notify(NOTIFICATION_ID,notification)
+
+
+                }
+
+            }
+
+            override fun onCancelled(p0: DatabaseError) {
+                TODO("Not yet implemented")
+            }
+
+        })
 
         navigationTabs.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(tab: TabLayout.Tab?) {

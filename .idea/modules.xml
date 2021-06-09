@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BeerMe-v2.iml" filepath="$PROJECT_DIR$/.idea/modules/BeerMe-v2.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BeerMe-v2.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BeerMe-v2.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BeerMe.iml" filepath="$PROJECT_DIR$/.idea/modules/BeerMe.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/BeerMe.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/BeerMe.app.iml" />
     </modules>
   </component>
 </project>

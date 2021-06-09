@@ -4,8 +4,13 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.4.aar/eeac34126dd7e9e0fe958406ab0b8eb8/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.4.aar/eeac34126dd7e9e0fe958406ab0b8eb8/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.4.aar/eeac34126dd7e9e0fe958406ab0b8eb8/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.4.aar/025b4ad43e394b2f55e0559e5ada6798/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.4.aar/025b4ad43e394b2f55e0559e5ada6798/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/firebase-common-16.0.4.aar/025b4ad43e394b2f55e0559e5ada6798/jars/classes.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.google.firebase/firebase-common/16.0.4/677bab4705381a3dd75cbb542aaa91d1194878ab/firebase-common-16.0.4-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES />
   </library>
 </component>
