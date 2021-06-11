@@ -108,7 +108,7 @@ class BeerMeActivity : AppCompatActivity(), Callback {
                 children.forEach{
                     iter +=1
                 }
-                if(iter != counter && counter != 0 ){
+                if(iter != counter ){
                     counter = iter
                     val notification = NotificationCompat.Builder(applicationContext,CHANNEL_ID)
                         .setContentText("Nasze grono użytkowników się powiększa. Własnie w szeregi naszych użytkowników wstąpił nowy członek.")
